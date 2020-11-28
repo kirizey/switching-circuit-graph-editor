@@ -23,11 +23,21 @@
   background-color: rgb(48, 221, 135);
 }
 
-.components-list {
+.components-list,
+.matrix {
   background-color: rgba(0,0,0,0.2);
   padding: 10px;
 }
 
 .components-list code {
   white-space: pre;
+}
+
+.matrix h3 {
+  margin-bottom: 35px;
+}
+
+.matrix th {
+  text-align: center;
+  padding: 5px;
 }

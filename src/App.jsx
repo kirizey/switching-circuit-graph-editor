@@ -49,10 +49,7 @@ function App() {
         <div className="files">
           <h3>Выберите файл</h3>
           <div className="file-field input-field">
-            <div className="btn">
-              <span>File</span>
-              <input onChange={handleFileChange} type="file" />
-            </div>
+            <input onChange={handleFileChange} type="file" />
             <div className="file-path-wrapper">
               <input className="file-path validate" type="text" />
             </div>
@@ -62,7 +59,7 @@ function App() {
         </div>
 
         <div className="results">
-          <Matrix />
+          <Matrix plate={plate} />
         </div>
       </div>
     </>
