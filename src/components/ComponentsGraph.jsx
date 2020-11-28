@@ -25,7 +25,7 @@ const myConfig = {
   },
 };
 
-export default function ComponentsGraph({ plate }) {
+export default function ComponentsGraph({ plate, renderMatrix }) {
   if (!plate) {
     return null;
   }
@@ -46,24 +46,20 @@ export default function ComponentsGraph({ plate }) {
     }
   });
 
+
+
+  
+  console.log(renderMatrix);
   const graph = {
     nodes: components?.map((c, index) => ({
       id: c.name,
       x: getRandomInt(1, 800),
       y: getRandomInt(1, 800),
-      symbolType: "square"
+      symbolType: 'square',
     })),
     links: [],
   };
-  console.log(components);
 
-  // const links = components.map(cSource => {
-  //   return components.map(cDest => {
-  //     if (cSource.) {
-
-  //     }
-  //   })
-  // })
 
   const renderGraph = (
     <Graph

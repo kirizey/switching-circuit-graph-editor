@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable no-undef */
+import { useEffect, useState } from 'react';
 import './App.css';
 import Matrix from './components/Matrix';
 import ComponentsList from './components/ComponentsList';
@@ -44,11 +45,47 @@ function App() {
     fileReader.readAsText(sourceFile);
   };
 
+  const [renderMatrix, setRenderMatrix] = useState(null);
+
+  useEffect(() => {
+    if (!plate) {
+      return;
+    }
+
+    const allNodesNames = plate.map((node) => node.name).filter((t) => t);
+    const allComponentsNames = plate
+      .map((node) => node.components.map((component) => component.name))
+      .flat()
+      .unique();
+    const QMatrix = math.matrix(math.zeros([allComponentsNames.length, allNodesNames.length]));
+    plate.forEach((node, j) => {
+      node.components.forEach((component) => {
+        const i = allComponentsNames.indexOf(component.name);
+        QMatrix._data[i][j] = 1;
+      });
+    });
+
+    const RMatrix = math.multiply(QMatrix, math.transpose(QMatrix));
+    RMatrix._data.forEach((_, index) => {
+      RMatrix._data[index][index] = 0;
+    });
+    RMatrix._data.forEach((_, index) => {
+      RMatrix._data[index].unshift(allComponentsNames[index]);
+    });
+    RMatrix._data.unshift(['', ...allComponentsNames]);
+
+    setRenderMatrix(RMatrix);
+
+    return () => {
+      setRenderMatrix(null);
+    };
+  }, [plate]);
+
   return (
     <>
       <div className="app">
         <div className="z-depth-3 files">
-          <h3 >Выберите файл</h3>
+          <h3>Выберите файл</h3>
           <div className="file-field input-field">
             <input onChange={handleFileChange} type="file" />
             <div className="file-path-wrapper">
@@ -60,8 +97,8 @@ function App() {
         </div>
 
         <div className="results">
-          <Matrix plate={plate} />
-          <ComponentsGraph plate={plate} />
+          <Matrix renderMatrix={renderMatrix} />
+          <ComponentsGraph renderMatrix={renderMatrix} plate={plate} />
         </div>
       </div>
     </>
