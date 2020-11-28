@@ -73,13 +73,6 @@ export default function Matrix({ plate }) {
 
       {renderMatrix && (
         <table className="highlight centered">
-          {/* <thead>
-            <tr>
-              <th></th>
-              {renderTopHead}
-            </tr>
-          </thead> */}
-
           <tbody>{renderMatrixBody}</tbody>
         </table>
       )}
