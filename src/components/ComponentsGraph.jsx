@@ -26,7 +26,7 @@ const myConfig = {
 };
 
 export default function ComponentsGraph({ plate, renderMatrix }) {
-  if (!plate) {
+  if (!plate || !renderMatrix) {
     return null;
   }
 
@@ -46,10 +46,22 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     }
   });
 
-
-
+  const links = []
   
-  console.log(renderMatrix);
+  for (let i = renderMatrix._size[0]; i > 1; i--) {
+    for (let j = i; j >  1; j--) {
+      if (renderMatrix._data[i][j-1]>0) {
+        const s = renderMatrix._data[0][j-1];
+        const t = renderMatrix._data[i][0];
+
+        links.push({source: s, target: t})
+      }
+    } 
+  }
+
+  console.log(links);
+  
+
   const graph = {
     nodes: components?.map((c, index) => ({
       id: c.name,
@@ -57,7 +69,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
       y: getRandomInt(1, 800),
       symbolType: 'square',
     })),
-    links: [],
+    links,
   };
 
 
