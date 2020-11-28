@@ -4,10 +4,14 @@
   background-color: seagreen;
   color: #fff;
   display: grid;
-  grid-template-columns: 620px 1fr;
+  grid-template-columns: auto 1fr;
   gap: 10px;
   padding: 20px;
   overflow: auto;
+}
+
+h3 {
+  font-style: italic;
 }
 
 .app::-webkit-scrollbar {
@@ -24,9 +28,14 @@
 }
 
 .components-list,
-.matrix {
+.matrix,
+.graph,
+.files {
   background-color: rgba(0,0,0,0.2);
-  padding: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  height: fit-content;
 }
 
 .components-list code {
@@ -40,4 +49,13 @@
 .matrix th {
   text-align: center;
   padding: 5px;
+}
+
+.graph #graph-id-graph-wrapper {
+  height: 800px;
+}
+
+.graph svg {
+  height: 100% !important;
+  width: 100% !important;
 }

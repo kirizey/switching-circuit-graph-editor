@@ -44,6 +44,7 @@ export default function Matrix({ plate }) {
     RMatrix._data.forEach((_, index) => {
       RMatrix._data[index].unshift(allComponentsNames[index]);
     });
+    RMatrix._data.unshift(['', ...allComponentsNames]);
 
     setRenderMatrix(RMatrix);
 
@@ -65,20 +66,19 @@ export default function Matrix({ plate }) {
       </tr>
     );
   });
-  const renderTopHead = componentsNames?.map((node) => <th>{node}</th>);
 
   return (
-    <div className="matrix">
+    <div className="z-depth-3 matrix">
       <h3>R Matrix</h3>
 
       {renderMatrix && (
         <table className="highlight centered">
-          <thead>
+          {/* <thead>
             <tr>
               <th></th>
               {renderTopHead}
             </tr>
-          </thead>
+          </thead> */}
 
           <tbody>{renderMatrixBody}</tbody>
         </table>

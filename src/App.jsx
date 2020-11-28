@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Matrix from './components/Matrix';
 import ComponentsList from './components/ComponentsList';
+import ComponentsGraph from './components/ComponentsGraph';
 
 function App() {
   const [plate, setPlate] = useState(null);
@@ -46,8 +47,8 @@ function App() {
   return (
     <>
       <div className="app">
-        <div className="files">
-          <h3>Выберите файл</h3>
+        <div className="z-depth-3 files">
+          <h3 >Выберите файл</h3>
           <div className="file-field input-field">
             <input onChange={handleFileChange} type="file" />
             <div className="file-path-wrapper">
@@ -60,6 +61,7 @@ function App() {
 
         <div className="results">
           <Matrix plate={plate} />
+          <ComponentsGraph plate={plate} />
         </div>
       </div>
     </>
