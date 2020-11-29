@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Graph } from 'react-d3-graph';
-
-// function getRandomInt(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-// }
 
 export default function ComponentsGraph({ plate, renderMatrix }) {
   if (!plate || !renderMatrix) {
@@ -67,10 +61,8 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
   }
 
   const graph = {
-    nodes: components?.map((c, index) => ({
+    nodes: components?.map((c) => ({
       id: c.name,
-      // x: getRandomInt(1, 800),
-      // y: getRandomInt(1, 800),
       symbolType: 'square',
     })),
     links,
@@ -88,7 +80,6 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     plate && (
       <div className="z-depth-3 graph">
         <h3>Graph</h3>
-
         {renderGraph}
       </div>
     )
