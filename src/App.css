@@ -64,3 +64,18 @@ h3 {
 #graph-id-graph-container-zoomable {
   background-color: rgba(0,0,0,0.2);
 }
+
+.results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.tools {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+}
+
+.run-btn {
+  align-self: center;
+}

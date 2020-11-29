@@ -9,7 +9,6 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     automaticRearrangeAfterDropNode: true,
     node: {
       color: 'tomato',
-      size: 3000,
       highlightStrokeColor: 'blue',
       fontSize: 22,
       highlightFontSize: 22,
@@ -20,12 +19,10 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
       highlightColor: 'lightblue',
       fontSize: 22,
       highlightFontSize: 22,
-      type: 'CURVE_SMOOTH',
+      // type: 'CURVE_SMOOTH',
     },
     d3: {
-      alphaTarget: 0.3,
-      gravity: -201,
-      linkLength: 300,
+      // linkLength: 1000,
       linkStrength: 1,
       disableLinkForce: false,
     },
@@ -46,7 +43,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
 
       components[indexOfFoundC].outputs.push({
         showName: component.output.trim(),
-        name: `${findC.name}:${component.output.trim()}`,
+        name: `${findC.name}::${component.output.trim()}`,
         node: component.nodeName.trim(),
         component: findC.name,
       });
@@ -58,7 +55,6 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     .map((c) => c.node)
     .flat()
     .unique();
-  console.log({ components, outputs, nodes });
 
   const links = [];
 
@@ -72,16 +68,19 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     symbolType: 'square',
     label: c.showName,
     color: 'hotpink',
+    size: 4000,
   }));
   const renderNodes = nodes?.map((n) => ({
     id: n,
     symbolType: 'circle',
     color: 'brown',
+    size: 4000,
   }));
   const renderOutputs = outputs?.map((o) => ({
     id: o.name,
     symbolType: 'cross',
     color: 'seagreen',
+    size: 1800,
   }));
 
   const graph = {
@@ -95,6 +94,42 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     plate && (
       <div className="z-depth-3 graph">
         <h3>Schema</h3>
+        <div className="tools">
+          <div>
+            <p>Square - COMPONENT</p>
+            <p>Circle - NODE</p>
+            <p>Cross - OUTPUT</p>
+          </div>
+
+          <form action="#">
+            <p>
+              <label>
+                <input type="checkbox" />
+                <span>Param 1</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Param 2</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Param 3</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" checked="checked" />
+                <span>Param 4</span>
+              </label>
+            </p>
+          </form>
+
+          <button class="run-btn waves-effect waves-light btn-large">Run algorithm</button>
+        </div>
         {renderGraph}
       </div>
     )

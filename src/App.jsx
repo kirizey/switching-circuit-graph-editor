@@ -99,8 +99,6 @@ function App() {
 
         <div className="results">
           <Matrix renderMatrix={renderMatrix} />
-        </div>
-        <div className="results">
           <ComponentsGraph renderMatrix={renderMatrix} plate={plate} />
         </div>
       </div>
