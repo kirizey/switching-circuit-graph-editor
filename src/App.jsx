@@ -33,6 +33,7 @@ function App() {
       })
       .filter((t) => t);
 
+    setPlate(null);
     setPlate(plate);
     setFileData(data);
   };

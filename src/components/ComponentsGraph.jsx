@@ -7,9 +7,8 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
   }
   const myConfig = {
     automaticRearrangeAfterDropNode: true,
-    height: 400,
     node: {
-      color: 'lightgreen',
+      color: 'tomato',
       size: 1800,
       highlightStrokeColor: 'blue',
       fontSize: 20,
@@ -21,6 +20,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
       highlightColor: 'lightblue',
       fontSize: 20,
       highlightFontSize: 20,
+      type: "CURVE_SMOOTH"
     },
     d3: {
       alphaTarget: 0.3,
@@ -46,6 +46,8 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
       components[indexOfFoundC].outputs.push({ output: component.output.trim(), node: component.nodeName.trim() });
     }
   });
+
+  console.log({components})
 
   const links = [];
 
@@ -79,7 +81,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
   return (
     plate && (
       <div className="z-depth-3 graph">
-        <h3>Graph</h3>
+        <h3>Schema</h3>
         {renderGraph}
       </div>
     )

@@ -8,10 +8,12 @@
   gap: 10px;
   padding: 20px;
   overflow: auto;
+  font-size: 14px;
 }
 
 h3 {
   font-style: italic;
+  font-size: 30px;
 }
 
 .app::-webkit-scrollbar {
@@ -30,7 +32,8 @@ h3 {
 .components-list,
 .matrix,
 .graph,
-.files {
+.files,
+#graph-id-graph-wrapper {
   background-color: rgba(0,0,0,0.2);
   padding: 20px;
   margin-bottom: 20px;
@@ -48,14 +51,19 @@ h3 {
 
 .matrix th {
   text-align: center;
-  padding: 5px;
 }
 
 .graph #graph-id-graph-wrapper {
-  height: 400px;
+  height: 380px;
+  width: 380px;
+  padding: 10px;
 }
 
 .graph svg {
   height: 100% !important;
   width: 100% !important;
+}
+
+#graph-id-graph-container-zoomable {
+  background-color: rgba(0,0,0,0.2);
 }
