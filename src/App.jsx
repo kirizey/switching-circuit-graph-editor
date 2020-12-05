@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Matrix from './components/Matrix';
-import ComponentsList from './components/ComponentsList';
+import ReadingBlock from './components/ReadingBlock';
 import ComponentsGraph from './components/ComponentsGraph';
 
 function App() {
@@ -85,17 +85,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <div className="z-depth-3 files">
-          <h3>Выберите файл</h3>
-          <div className="file-field input-field">
-            <input onChange={handleFileChange} type="file" />
-            <div className="file-path-wrapper">
-              <input className="file-path validate" type="text" />
-            </div>
-          </div>
-
-          <ComponentsList data={fileData} />
-        </div>
+        <ReadingBlock fileData={fileData} handleFileChange={handleFileChange}  />
 
         <div className="results">
           <Matrix renderMatrix={renderMatrix} />
