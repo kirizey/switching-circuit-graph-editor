@@ -46,7 +46,7 @@ function App() {
     fileReader.readAsText(sourceFile);
   };
 
-  const [renderMatrix, setRenderMatrix] = useState(null);
+  const [renderQMatrix, setRenderQMatrix] = useState(null);
 
   useEffect(() => {
     if (!plate) {
@@ -75,12 +75,14 @@ function App() {
     });
     RMatrix._data.unshift(['', ...allComponentsNames]);
 
-    setRenderMatrix(RMatrix);
+    setRenderQMatrix(RMatrix);
 
     return () => {
-      setRenderMatrix(null);
+      setRenderQMatrix(null);
     };
   }, [plate]);
+
+  console.log({renderQMatrix, plate})
 
   return (
     <>
@@ -88,8 +90,8 @@ function App() {
         <ReadingBlock fileData={fileData} handleFileChange={handleFileChange}  />
 
         <div className="results">
-          <Matrix renderMatrix={renderMatrix} />
-          <ComponentsGraph renderMatrix={renderMatrix} plate={plate} />
+          <Matrix renderMatrix={renderQMatrix} />
+          <ComponentsGraph renderMatrix={renderQMatrix} plate={plate} />
         </div>
       </div>
     </>

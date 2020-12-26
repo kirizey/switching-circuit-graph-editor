@@ -1,5 +1,6 @@
 import React from 'react';
 import { Graph } from 'react-d3-graph';
+import CMatrix from './CMatrix';
 
 export default function ComponentsGraph({ plate, renderMatrix }) {
   if (!plate || !renderMatrix) {
@@ -68,7 +69,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     symbolType: 'square',
     label: c.showName,
     color: 'hotpink',
-    size: 4000,
+    size: 4001,
   }));
   const renderNodes = nodes?.map((n) => ({
     id: n,
@@ -80,7 +81,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     id: o.name,
     symbolType: 'cross',
     color: 'seagreen',
-    size: 1800,
+    size: 1801,
   }));
 
   const graph = {
@@ -93,8 +94,10 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
   return (
     plate && (
       <div className="z-depth-3 graph">
+        <CMatrix components={allComponents} nodes={nodes} outputs={outputs} />
+
         <h3>Schema</h3>
-        <div className="tools">
+        {/* <div className="tools">
           <div>
             <p>Square - COMPONENT</p>
             <p>Circle - NODE</p>
@@ -129,7 +132,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
           </form>
 
           <button class="run-btn waves-effect waves-light btn-large">Run algorithm</button>
-        </div>
+        </div> */}
         {renderGraph}
       </div>
     )
