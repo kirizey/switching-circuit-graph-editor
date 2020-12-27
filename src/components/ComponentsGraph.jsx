@@ -19,8 +19,7 @@ export default function ComponentsGraph({ plate, renderMatrix }) {
     link: {
       highlightColor: 'lightblue',
       fontSize: 20,
-      highlightFontSize: 20,
-      type: "CURVE_SMOOTH"
+      highlightFontSize: 20
     },
     d3: {
       alphaTarget: 0.3,
